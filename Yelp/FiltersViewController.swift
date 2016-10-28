@@ -17,6 +17,7 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet weak var tableView: UITableView!
     var categories: [[String:String]]!
     var switchState = [Int:Bool]()
+    var filters = Filters()
     
     weak var delegate: FiltersViewControllerDelegate?
     
@@ -75,6 +76,15 @@ class FiltersViewController: UIViewController, UITableViewDelegate, UITableViewD
         }
         
         delegate?.filtersViewController?(filtersViewController: self, didUpdateFilters: filters)
+    }
+    
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let width = UIScreen.main.bounds.size.width
+        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: width, height: 50))
+        headerView.backgroundColor = UIColor(red:1.00, green:0.97, blue:0.96, alpha:1.0)
+        
+        
+        return headerView
     }
     
     func yelpCategories() -> [[String:String]] {
